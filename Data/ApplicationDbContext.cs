@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using AskMate.Models;
 
 namespace AskMate.Data
 {
@@ -9,5 +10,6 @@ namespace AskMate.Data
             : base(options)
         {
         }
+        public DbSet<AskMate.Models.FAQs>? FAQs { get; set; }
     }
 }

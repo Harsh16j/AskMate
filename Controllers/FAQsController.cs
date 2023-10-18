@@ -27,6 +27,18 @@ namespace AskMate.Controllers
                           Problem("Entity set 'ApplicationDbContext.FAQs'  is null.");
         }
 
+        // GET: FAQs/ShowSearchForm
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return View();
+        }
+
+        // POST: FAQs/ShowSearchResults
+        public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
+        {
+            return View("Index",await _context.FAQs.Where(data=> data.faqQuestion.Contains(SearchPhrase) || data.faqAnswer.Contains(SearchPhrase) ) .ToListAsync());
+        }
+
         // GET: FAQs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
